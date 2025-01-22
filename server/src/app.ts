@@ -1,7 +1,7 @@
 import "dotenv/config";
 import express from 'express';
 import morgan from "morgan";
-// import mongoose from 'mongoose';
+import mongoose from 'mongoose';
 
 
 const app = express();
@@ -11,7 +11,7 @@ app.use(express.json());
 
 async function main() {
     try {
-
+        await mongoose.connect(process.env.DB_URI as string);
         app.listen(process.env.PORT, () => {
             console.log(`Server is running on port ${process.env.PORT}`);
         });
