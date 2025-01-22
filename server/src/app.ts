@@ -2,12 +2,17 @@ import "dotenv/config";
 import express from 'express';
 import morgan from "morgan";
 import mongoose from 'mongoose';
+import router from "./router/router";
+import errorMiddleware from "./middlewares/errorMiddleware";
 
 
 const app = express();
 
 app.use(morgan('dev'));
 app.use(express.json());
+
+app.use("/api", router);
+app.use(errorMiddleware);
 
 async function main() {
     try {
