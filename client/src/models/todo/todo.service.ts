@@ -1,11 +1,11 @@
-import {ITodo, ITodoResponse} from "./todo.types.ts";
+import {ITodo, ITodoGetResponse, ITodoResponse} from "./todo.types.ts";
 
 const URL = import.meta.env.VITE_SERVER_URL;
 
 
 class TodoService {
 
-    async getAll() : Promise<ITodoResponse> {
+    async getAll() : Promise<ITodoGetResponse> {
         const response = await fetch(`${URL}/api/todos`, {
             method: 'GET'
         });

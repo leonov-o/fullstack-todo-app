@@ -4,8 +4,17 @@ export interface ITodo {
     done: boolean;
 }
 
-export interface ITodoResponse {
+interface ITodoResponseBase {
     success: boolean,
-    data: ITodo | ITodo[] | null,
     message: string | null
 }
+
+export interface ITodoGetResponse extends ITodoResponseBase {
+    data: ITodo[]
+}
+
+export interface ITodoResponse extends ITodoResponseBase {
+    data: ITodo
+}
+
+
