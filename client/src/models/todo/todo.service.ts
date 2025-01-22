@@ -15,6 +15,7 @@ class TodoService {
     async create(text: ITodo["text"]): Promise<ITodoResponse> {
         const response = await fetch(`${URL}/api/todos`, {
             method: 'POST',
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({text})
         });
         return response.json();
@@ -23,6 +24,7 @@ class TodoService {
     async update({id, text, done}: ITodo): Promise<ITodoResponse> {
         const response = await fetch(`${URL}/api/todos/${id}`, {
             method: 'PUT',
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({text, done})
         });
         return response.json();
